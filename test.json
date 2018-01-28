@@ -1,1 +1,52 @@
-{"students":[{"name":{"fname":"Jordan","lname":"Ghidossi"},"numGrades":1,"average":97.0},{"name":{"fname":"Michael","lname":"Shindler"},"numGrades":4,"average":93.0},{"name":{"fname":"Jeffrey","lname":"Miller"},"numGrades":5,"average":92.0},{"name":{"fname":"Aaron","lname":"Cote"},"numGrades":7,"average":90.0},{"name":{"fname":"Tommy","lname":"Trojan"},"numGrades":4,"average":86.0},{"name":{"fname":"George","lname":"Tirebiter"},"numGrades":6,"average":74.0},{"name":{"fname":"William","lname":"Squires"},"numGrades":1,"average":45.0}]}
+{
+	"students": [{
+			"name": {
+				"fname": "Tommy",
+				"lname": "Trojan"
+
+			},
+			"average": "86",
+			"numGrades": "4"
+		},
+		{
+			"name": {
+				"fname": "George",
+				"lname": "Tirebiter"
+			},
+			"average": "74",
+			"numGrades": "6"
+		},
+		{
+			"name": {
+				"fname": "Billy",
+				"lname": "Bruin"
+			},
+			"average": "63",
+			"numGrades": "1"
+		},
+		{
+			"name": {
+				"fname": "Jeffrey",
+				"lname": "Miller"
+			},
+			"average": "92",
+			"numGrades": "5"
+		},
+		{
+			"name": {
+				"fname": "Michael",
+				"lname": "Shindler"
+			},
+			"average": "93",
+			"numGrades": "4"
+		},
+		{
+			"name": {
+				"fname": "Aaron",
+				"lname": "Cote"
+			},
+			"average": "90",
+			"numGrades": "7"
+		}
+	]
+}
