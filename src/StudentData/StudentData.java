@@ -162,7 +162,7 @@ public class StudentData
 		}
 		return true;
 	}
-	public static void outputFile() //Add options
+	public static void outputFile()
 	{
 		try (Writer writer = new FileWriter(fileName))
 		{
@@ -170,7 +170,7 @@ public class StudentData
 			gson.toJson(roster, writer);
 		}
 		catch (IOException e) {}
-		System.out.println("File has been saved");
+		System.out.println("File has been saved.");
 	}
 	public static void exit(Scanner scan)
 	{
@@ -184,6 +184,7 @@ public class StudentData
 				outputFile();
 				break;
 			case 2:
+				System.out.println("File was not saved.");
 				break;
 			default: 
 				System.out.println("That is not a valid option\n");
@@ -191,6 +192,7 @@ public class StudentData
 				break;
 			}
 		}
+		System.out.print("Thank you for using my program!");
 		System.exit(0);
 	}
 }
