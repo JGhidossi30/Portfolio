@@ -43,73 +43,101 @@ public class StudentData
 			roster.print();
 			break;
 		case 2: 
-			System.out.print("\nWhat is the students name? ");
-			String aName = scan.nextLine();
-			if (!addStudent(aName))
+			String aName;
+			do
 			{
-				System.out.println("Invalid, must have first and last name.");
-				break;
+				System.out.print("\nWhat is the students name? ");
+				aName = scan.nextLine();
+				if (!addStudent(aName))
+					System.out.println("Invalid, must have first and last name.");	
 			}
+			while (!addStudent(aName));
 			exitPrompt = true;
 			break;
 		case 3: 
-			System.out.println();
-			for (int i = 0; i < roster.getSize(); i++)
-				System.out.printf("%d) %s\n", i + 1, roster.getName(i));
-			System.out.print("\nPlease choose a student to remove: ");
-			try
+			boolean loop;
+			do
 			{
-				int index = Integer.parseInt(scan.nextLine()) - 1;
-				if (index < 0 || index > roster.getSize() - 1)
+				loop = true;
+				System.out.println();
+				for (int i = 0; i < roster.getSize(); i++)
+					System.out.printf("%d) %s\n", i + 1, roster.getName(i));
+				System.out.print("\nPlease choose a student to remove: ");
+				try
+				{
+					int index = Integer.parseInt(scan.nextLine()) - 1;
+					if (index < 0 || index > roster.getSize() - 1)
+					{
+						System.out.println("Invalid, must be a number between 1 and " + roster.getSize() + ".");
+						loop = false;
+						continue;
+					}
+					roster.removeStudent(index);
+					exitPrompt = true;
+				}
+				catch (NumberFormatException e)
 				{
 					System.out.println("Invalid, must be a number between 1 and " + roster.getSize() + ".");
-					break;
+					loop = false;
 				}
-				roster.removeStudent(index);
-				exitPrompt = true;
-			}
-			catch (NumberFormatException e)
-			{
-				System.out.println("Invalid, must be a number between 1 and " + roster.getSize() + ".");
-			}
+			} while (!loop);
 			break;
 		case 4: 
-			System.out.println();
-			for (int i = 0; i < roster.getSize(); i++)
-				System.out.printf("%d) %s\n", i + 1, roster.getName(i));
-			System.out.print("\nPlease choose a student to grade: ");
-			try
+			boolean loopg;
+			do
 			{
-				int index = Integer.parseInt(scan.nextLine()) - 1;
-				if (index < 0 || index > roster.getSize() - 1)
+				loopg = true;
+				System.out.println();
+				for (int i = 0; i < roster.getSize(); i++)
+					System.out.printf("%d) %s\n", i + 1, roster.getName(i));
+				System.out.print("\nPlease choose a student to grade: ");
+				try
+				{
+					int index = Integer.parseInt(scan.nextLine()) - 1;
+					if (index < 0 || index > roster.getSize() - 1)
+					{
+						System.out.println("Invalid, must be a number between 1 and " + roster.getSize() + ".");
+						loopg = false;
+						continue;
+					}
+					System.out.print("Please enter a new score: ");
+					double grade = Double.parseDouble(scan.nextLine());
+					roster.addGrade(index, grade);
+					System.out.println();
+					roster.getStudent(index).print();
+					exitPrompt = true;
+				}
+				catch (NumberFormatException e)
 				{
 					System.out.println("Invalid, must be a number between 1 and " + roster.getSize() + ".");
-					break;
+					loopg = false;
 				}
-				System.out.print("Please enter a new score: ");
-				double grade = Double.parseDouble(scan.nextLine());
-				roster.addGrade(index, grade);
-				System.out.println();
-				roster.getStudent(index).print();
-				exitPrompt = true;
-			}
-			catch (NumberFormatException e)
-			{
-				System.out.println("Invalid, must be a number between 1 and " + roster.getSize() + ".");
-			}
+			} while (!loopg);
 			break;
 		case 5: 
-			System.out.print("\n1) Alphabetically\n2) GPA\nHow would you like to sort the roster? ");
-			try
+			boolean loops;
+			do
 			{
-				int sort = Integer.parseInt(scan.nextLine());
-				roster.sortRoster(sort);
-				exitPrompt = true;
-			}
-			catch (NumberFormatException e) 
-			{
-				System.out.println("Invalid, must be 1 or 2.");
-			}
+				loops = true;
+				System.out.print("\n1) Alphabetically\n2) GPA\nHow would you like to sort the roster? ");
+				try
+				{
+					int sort = Integer.parseInt(scan.nextLine());
+					if (sort != 1 && sort != 2)
+					{
+						System.out.println("Invalid, must be 1 or 2.");
+						loops = false;
+						continue;
+					}
+					roster.sortRoster(sort);
+					exitPrompt = true;
+				}
+				catch (NumberFormatException e) 
+				{
+					System.out.println("Invalid, must be 1 or 2.");
+					loops = false;
+				}
+			} while (!loops);
 			break;
 		case 6: 
 			System.out.println();
