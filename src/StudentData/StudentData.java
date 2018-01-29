@@ -50,6 +50,8 @@ public class StudentData
 				aName = scan.nextLine();
 				if (!addStudent(aName))
 					System.out.println("Invalid, must have first and last name.");	
+				else
+					break;
 			}
 			while (!addStudent(aName));
 			exitPrompt = true;
