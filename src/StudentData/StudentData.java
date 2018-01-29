@@ -82,9 +82,11 @@ public class StudentData
 					System.out.println("Invalid, must be a number between 1 and " + roster.getSize() + ".");
 					loop = false;
 				}
-			} while (!loop);
+			} 
+			while (!loop);
 			break;
-		case 4: 
+		case 4:
+			int index = -1;
 			boolean loopg;
 			do
 			{
@@ -95,13 +97,27 @@ public class StudentData
 				System.out.print("\nPlease choose a student to grade: ");
 				try
 				{
-					int index = Integer.parseInt(scan.nextLine()) - 1;
+					index = Integer.parseInt(scan.nextLine()) - 1;
 					if (index < 0 || index > roster.getSize() - 1)
 					{
 						System.out.println("Invalid, must be a number between 1 and " + roster.getSize() + ".");
 						loopg = false;
 						continue;
 					}
+				} 
+				catch (NumberFormatException e)
+				{
+					System.out.println("Invalid, must be a number between 1 and " + roster.getSize() + ".");
+					loopg = false;
+				}
+			} 
+			while (!loopg);
+			boolean loopgg;
+			do
+			{
+				loopgg = true;
+				try
+				{
 					System.out.print("Please enter a new score: ");
 					double grade = Double.parseDouble(scan.nextLine());
 					roster.addGrade(index, grade);
@@ -109,12 +125,13 @@ public class StudentData
 					roster.getStudent(index).print();
 					exitPrompt = true;
 				}
-				catch (NumberFormatException e)
+				catch (NumberFormatException e) 
 				{
-					System.out.println("Invalid, must be a number between 1 and " + roster.getSize() + ".");
-					loopg = false;
+					System.out.println("Invalid, must be a number.\n");
+					loopgg = false;
 				}
-			} while (!loopg);
+			}
+			while (!loopgg);
 			break;
 		case 5: 
 			boolean loops;
@@ -139,7 +156,8 @@ public class StudentData
 					System.out.println("Invalid, must be 1 or 2.");
 					loops = false;
 				}
-			} while (!loops);
+			} 
+			while (!loops);
 			break;
 		case 6: 
 			System.out.println();
